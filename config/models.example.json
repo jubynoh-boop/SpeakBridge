@@ -1,0 +1,8 @@
+{
+  "hf_home": ".model-cache/huggingface",
+  "torch_home": ".model-cache/torch",
+  "pip_cache": ".model-cache/pip",
+  "npm_cache": ".model-cache/npm",
+  "runtime_temp": ".model-cache/temp",
+  "hy_mt2_model": "models/HY-MT2-7B-Q6_K.gguf"
+}

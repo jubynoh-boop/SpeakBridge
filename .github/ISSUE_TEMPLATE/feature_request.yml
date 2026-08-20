@@ -1,0 +1,30 @@
+name: Feature request
+description: Suggest a focused improvement
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user problem should SpeakBridge solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: tradeoffs
+    attributes:
+      label: Latency, privacy, and resource trade-offs
+      description: Mention expected network use, model downloads, VRAM/RAM, or added delay.
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This can preserve local-only meeting processing by default.
+          required: true

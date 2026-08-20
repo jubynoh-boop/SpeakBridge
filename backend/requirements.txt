@@ -1,0 +1,15 @@
+fastapi>=0.115,<1
+uvicorn[standard]>=0.34,<1
+numpy>=2.0,<3
+soundfile>=0.13,<1
+PyAudioWPatch>=0.2.12,<1
+faster-whisper>=1.2,<2
+silero-vad>=6.0,<7
+transformers>=4.48,<5
+sentencepiece>=0.2,<1
+sacremoses>=0.1,<1
+kokoro>=0.9.4,<1
+misaki[en]>=0.9.4,<1
+misaki[zh]>=0.9.4,<1
+espeakng-loader>=0.2,<1
+-r ../desktop/requirements.txt

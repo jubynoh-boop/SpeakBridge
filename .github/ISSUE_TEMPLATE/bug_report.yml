@@ -1,0 +1,61 @@
+name: Bug report
+description: Report reproducible SpeakBridge behavior
+title: "[Bug]: "
+labels: [bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: Do not upload private meeting audio or unredacted transcripts.
+  - type: input
+    id: version
+    attributes:
+      label: SpeakBridge version
+      placeholder: v0.1.0 or commit SHA
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - 02A system audio / subtitles
+        - 02B microphone / translated voice
+        - Voice typing / overlay
+        - Installation / models
+        - User interface
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Include selected devices, source/target languages, and mode.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Windows version, GPU/VRAM, microphone, playback device, Python and Node versions.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed personal data, private transcripts, tokens, and machine-local paths from this report.
+          required: true

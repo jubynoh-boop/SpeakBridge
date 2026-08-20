@@ -1,0 +1,5 @@
+keyboard>=0.13.5,<1
+pyperclip>=1.9,<2
+pystray>=0.19.5,<1
+pillow>=11,<13
+pyinstaller>=6.15,<7

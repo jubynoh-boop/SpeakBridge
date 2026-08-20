@@ -1,0 +1,1 @@
+"""SpeakBridge local speech engine."""
