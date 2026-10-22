@@ -18,8 +18,12 @@ test("renders the SpeakBridge local application", async () => {
   const html = await response.text();
   assert.match(html, /SpeakBridge/);
   assert.match(html, /Hai chiều/);
-  assert.match(html, /PHIÊN DỊCH HỌP HAI CHIỀU/);
+  assert.match(html, /NHẬN DẠNG/);
+  assert.match(html, /Áp dụng cả 02A \+ 02B/);
   assert.match(html, /Bên kia nói/);
   assert.match(html, /Tôi nói/);
+  assert.match(html, /Dịch chữ trên màn hình/);
+  assert.match(html, /Tiếng Nhật/);
+  assert.match(html, /Tiếng Hàn/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|Your site is taking shape/);
 });

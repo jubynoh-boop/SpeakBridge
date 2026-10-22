@@ -15,3 +15,5 @@ The maintainer will acknowledge a complete report when available, investigate it
 ## Local service boundary
 
 SpeakBridge binds its web and API services to loopback interfaces. Do not modify launch scripts to bind to a LAN/public address without adding authentication, request-size limits, and an explicit threat review.
+
+Advisor credentials are protected at rest with Windows current-user DPAPI. This is not an authentication boundary against software running as the same user. Local configuration, knowledge documents, logs, and backups may contain private information and must never be published. A backup made before credential migration can still contain the original plaintext key; keep it private.

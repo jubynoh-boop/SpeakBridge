@@ -25,6 +25,12 @@ jobs:
       - run: npm test
       - run: npm audit --audit-level=high
       - run: python -m compileall -q backend desktop
+      # Fast, dependency-free logic/security checks; full installed-engine tests
+      # also gate the Windows release build, without downloading models in CI.
+      - run: python -m unittest discover -s tests -p test_text_segments.py
+      - run: python -m unittest discover -s tests -p test_advisor.py
+      - run: python -m unittest discover -s tests -p test_windows_hotkeys.py
+      - run: powershell -NoProfile -ExecutionPolicy Bypass -File tests/process-ownership.test.ps1
 
   helper:
     runs-on: windows-latest

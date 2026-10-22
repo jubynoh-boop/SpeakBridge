@@ -5,8 +5,10 @@ import threading
 from typing import Any
 
 import numpy as np
+from desktop.speech_output import AUDIO_API_LOCK, serialized_audio_api
 
 
+@serialized_audio_api
 def list_input_devices() -> list[str]:
     """List physical/virtual recording devices available to the hotkey helper."""
     import pyaudiowpatch as pyaudio
@@ -36,6 +38,7 @@ def list_input_devices() -> list[str]:
         audio.terminate()
 
 
+@serialized_audio_api
 def list_output_devices() -> list[str]:
     """List real WASAPI playback devices that can be captured by loopback."""
     import pyaudiowpatch as pyaudio
@@ -74,7 +77,8 @@ class SystemAudioCapture:
         import pyaudiowpatch as pyaudio
 
         self._pyaudio = pyaudio
-        self._audio = pyaudio.PyAudio()
+        with AUDIO_API_LOCK:
+            self._audio = pyaudio.PyAudio()
         self._device_name = device_name or None
         self.sample_rate = sample_rate
         self.audio_queue: queue.Queue[np.ndarray] = queue.Queue(maxsize=120)
@@ -179,4 +183,5 @@ class SystemAudioCapture:
             except Exception:
                 pass
             self._stream = None
-        self._audio.terminate()
+        with AUDIO_API_LOCK:
+            self._audio.terminate()

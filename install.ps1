@@ -17,28 +17,26 @@ if (-not (Get-Command "npm.cmd" -ErrorAction SilentlyContinue)) {
 $NodeMajor = [int]((& node.exe --version).TrimStart("v").Split(".")[0])
 if ($NodeMajor -lt 22) { throw "Node.js 22 or newer is required." }
 
-Write-Host "[1/4] Tao moi truong Python..." -ForegroundColor Cyan
+Write-Host "[1/5] Tao moi truong Python..." -ForegroundColor Cyan
 if (-not (Test-Path -LiteralPath ".venv\Scripts\python.exe")) {
     py -3.11 -m venv .venv
 }
 $PythonExe = Join-Path $ProjectRoot ".venv\Scripts\python.exe"
 
-Write-Host "[2/4] Cai PyTorch CUDA..." -ForegroundColor Cyan
+Write-Host "[2/5] Cai PyTorch CUDA..." -ForegroundColor Cyan
 & $PythonExe -m pip install --upgrade pip
 & $PythonExe -m pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu128
 
-Write-Host "[3/4] Cai speech engine..." -ForegroundColor Cyan
+Write-Host "[3/5] Cai speech engine..." -ForegroundColor Cyan
 & $PythonExe -m pip install -r backend\requirements.txt
 
-Write-Host "[4/4] Cai va build giao dien..." -ForegroundColor Cyan
+Write-Host "[4/5] Cai va build giao dien..." -ForegroundColor Cyan
 & npm.cmd ci
 if ($LASTEXITCODE -ne 0) { throw "npm ci failed." }
 & npm.cmd run build
 if ($LASTEXITCODE -ne 0) { throw "Frontend build failed." }
 
-if (-not (Get-Command "llama-server.exe" -ErrorAction SilentlyContinue)) {
-    Write-Host "Cai llama.cpp cho bo dich Hy-MT2..." -ForegroundColor Cyan
-    & winget.exe install --id ggml.llamacpp -e --accept-source-agreements --accept-package-agreements
-}
+Write-Host "[5/5] Cai llama.cpp CUDA tren o F..." -ForegroundColor Cyan
+& (Join-Path $ProjectRoot "scripts\install-llama-cuda.ps1") -ProjectRoot $ProjectRoot
 
 Write-Host "Hoan tat. Chay .\prepare-models.ps1 mot lan, sau do .\start.ps1" -ForegroundColor Green

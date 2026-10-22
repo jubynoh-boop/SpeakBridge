@@ -3,7 +3,7 @@ from pathlib import Path
 
 from huggingface_hub import hf_hub_download
 
-from backend.server import models
+from backend.server import models, screen_ocr
 
 
 HY_REPO = "tencent/Hy-MT2-7B-GGUF"
@@ -42,7 +42,17 @@ def main() -> None:
         models.tts["en"].load_voice(voice)
     print("Dang tai voice Trung: zm_yunxi")
     models._tts_pipeline("zh").load_voice("zm_yunxi")
-    print("Da san sang. Model duoc luu trong cache local cua Hugging Face.")
+    print("Dang tai Supertonic 3 TTS Nhat/Han vao o F...")
+    from supertonic import TTS
+
+    TTS(model_dir=Path.cwd() / ".model-cache" / "supertonic3", auto_download=True, intra_op_num_threads=4)
+    print("Dang tai RapidOCR PP-OCRv6 cho dich chu tren man hinh...")
+    screen_ocr.prepare("cpu")
+    print("Dang tai PP-OCRv5 Korean ONNX cho dich man hinh tieng Han...")
+    screen_ocr.prepare("cpu", "ko")
+    if models.device == "cuda":
+        screen_ocr.prepare("gpu")
+    print("Da san sang. Model duoc luu trong cache local tren o cai dat SpeakBridge va Hugging Face.")
 
 
 if __name__ == "__main__":

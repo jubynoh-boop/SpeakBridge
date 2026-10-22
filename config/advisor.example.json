@@ -1,0 +1,13 @@
+{
+  "enabled": false,
+  "provider": "9router",
+  "base_url": "http://127.0.0.1:20128/v1",
+  "model": "auto",
+  "api_key": "",
+  "strict_scope": true,
+  "deal_mode": true,
+  "trigger_mode": "silence",
+  "silence_seconds": 3.0,
+  "max_suggestions": 3,
+  "knowledge_context": ""
+}

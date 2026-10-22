@@ -7,9 +7,13 @@ untraceable third-party conversion.
 
 - [Hy-MT2 7B GGUF](https://huggingface.co/tencent/Hy-MT2-7B-GGUF) — Apache License 2.0.
 - [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) — Apache License 2.0.
+- [Supertonic 3](https://huggingface.co/Supertone/supertonic-3) — OpenRAIL-M model license; downloaded separately for Japanese/Korean TTS. [Python SDK](https://github.com/supertone-oss-archive/supertonic-py) is MIT-licensed.
+- [VieNeu v3 Turbo](https://huggingface.co/pnnbao-ump/VieNeu-TTS-v3-Turbo) / [SDK](https://github.com/pnnbao97/VieNeu-TTS) — Apache-2.0; optional, separately downloaded Vietnamese CPU TTS. Its [MOSS ONNX audio codec](https://huggingface.co/OpenMOSS-Team/MOSS-Audio-Tokenizer-Nano-ONNX) is downloaded separately; consult its model license before redistributing weights. Models and the isolated runtime are not included in source or release ZIPs.
 - [Silero VAD](https://github.com/snakers4/silero-vad) — MIT License.
 - [faster-whisper](https://github.com/SYSTRAN/faster-whisper) — MIT License.
 - [Whisper](https://github.com/openai/whisper) — MIT License.
+- [RapidOCR](https://github.com/RapidAI/RapidOCR) — Apache License 2.0. OCR model weights are downloaded separately; model copyrights remain with their respective authors.
+- [PaddleOCR / PP-OCRv6 models](https://github.com/PaddlePaddle/PaddleOCR) — Apache License 2.0.
 
 VB-CABLE is separate software from VB-Audio. It is not included in this
 repository and remains subject to the terms published by VB-Audio.
